@@ -61,11 +61,12 @@ sim_linear <- function(n, beta, sigma2, seed = NA) {
 #' @return A \code{plot} representing the line of best fit for all predictors.
 #' @author Roberto Molinari
 #' @export
-plot.ls_optim <- function(object) {
+plot.ls_optim <- function(object, ...) {
 
-  response <- object$response
-  predictors <- object$predictors
-  beta_hat <- object$beta_hat
+  hold <- object
+  response <- hold$response
+  predictors <- hold$predictors
+  beta_hat <- hold$beta_hat
 
   dm <- ncol(predictors)
 
