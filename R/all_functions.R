@@ -55,6 +55,12 @@ sim_linear <- function(n, beta, sigma2, seed = NA) {
 
 }
 
+#' Plot fit from linear model
+#' @description This function creates plots of the line of best fit for each predictor
+#' @param object A \code{list} of class \code{ls_optim} with the results of the fit from the function \code{beta_hat}.
+#' @return A \code{plot} representing the line of best fit for all predictors.
+#' @author Roberto Molinari
+#' @export
 plot.ls_optim <- function(object) {
 
   dm <- ncol(object$predictors)
