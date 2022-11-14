@@ -63,14 +63,18 @@ sim_linear <- function(n, beta, sigma2, seed = NA) {
 #' @export
 plot.ls_optim <- function(object) {
 
-  dm <- ncol(object$predictors)
+  response <- object$response
+  predictors <- object$predictors
+  beta_hat <- object$beta_hat
+
+  dm <- ncol(predictors)
 
   par(mfrow = c(1, dm - 1))
 
   for(i in 2:dm) {
 
-    plot(object$predictors[, i], (object$response - object$predictors[, -c(1, i)]%*%object$beta_hat[-c(1, i)]), xlab = paste0("x",i), ylab = "response")
-    abline(object$beta_hat[1], object$beta_hat[i], col = "red")
+    plot(predictors[, i], (response - predictors[, -c(1, i)]%*%beta_hat[-c(1, i)]), xlab = paste0("x",i), ylab = "response")
+    abline(beta_hat[1], beta_hat[i], col = "red")
 
   }
 
